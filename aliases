@@ -1,0 +1,40 @@
+alias cqlsh='cqlsh -3'
+alias tb='torquebox run -J "-d64 -Xmx2G" -b 0.0.0.0'
+
+# noautocorrect
+alias rspec='noautocorrect rspec'
+
+alias ng='nginx -p `pwd`/ -c conf/nginx.conf'
+alias be='bundle exec'
+
+alias n='. ~/.node/bin/activate'
+
+alias gist='gist -p'
+
+alias mocha='mocha --compilers coffee:coffee-script/register'
+
+alias nemo='nemo --no-desktop'
+
+alias bu='xdotool key XF86MonBrightnessUp'
+alias bd='xdotool key XF86MonBrightnessDown'
+alias xclip='xclip -selection c'
+
+_mp4compress() {
+    echo ffmpeg -i "$1" -vcodec h264 -b:v 1000k "$2"
+    ffmpeg -i "$1" -vcodec h264 -b:v 1000k "$2"
+}
+
+alias mp4compress=_mp4compress
+alias docker-image-prune='docker rmi $(docker images -f "dangling=true" -q)'
+alias more-scrollback='tmux set-option history-limit 5000 \; new-window'
+alias dcdev='docker-compose -f docker-compose.dev.yml'
+alias dcitest='docker-compose -f docker-compose.itest.yml'
+#alias kubectl='kubectl -n ${KUBECTL_NAMESPACE}'
+
+function podname() {
+  kubectl get pods | grep $1 | grep "Running" | awk '{print $1}'
+}
+
+alias cgrep="grep --color=always"
+
+alias docker-compose-purge="docker-compose down --volumes --rmi local --remove-orphans"

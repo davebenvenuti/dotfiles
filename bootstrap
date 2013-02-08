@@ -1,0 +1,50 @@
+#!/bin/bash
+
+DOTFILES_PATH="${HOME}/.dotfiles"
+
+if [ ! -e ~/.oh-my-zsh ]; then
+  echo 'Installing/updating oh-my-zsh...'
+
+  git clone git@github.com:robbyrussell/oh-my-zsh.git ${HOME}/.oh-my-zsh
+fi
+
+echo 'Symlinking .zshrc...'
+
+ln -sf ${HOME}/.dotfiles/zsh/zshrc ${HOME}/.zshrc
+
+echo 'Symlinking git config...'
+
+ln -sf ${HOME}/.dotfiles/gitconfig ${HOME}/.gitconfig
+ln -sf ${HOME}/.dotfiles/gitignore ${HOME}/.gitignore
+
+if [ ! -e ${HOME}/.rbenv ]; then
+  echo 'Installing rbenv...'
+
+  git clone git@github.com:sstephenson/rbenv.git ${HOME}/.rbenv
+fi
+
+if [ ! -e ${HOME}/.rbenv/plugins/ruby-build ]; then
+  echo 'Installing rbenv plugin ruby-build...'
+
+  git clone git@github.com:sstephenson/ruby-build.git ${HOME}/.rbenv/plugins/ruby-build
+fi
+
+if [ ! -e ${HOME}/.pyenv ]; then
+  echo 'Installing pyenv...'
+
+  git clone git@github.com:pyenv/pyenv.git ${HOME}/.pyenv
+fi
+
+if [ ! -e ${HOME}/.node ]; then
+  git clone git@github.com:ekalinin/nodeenv.git ${HOME}/.nodeenv
+fi
+
+echo 'Symlinking tmux config...'
+ln -sf ${HOME}/.dotfiles/tmux.conf ${HOME}/.tmux.conf
+
+echo 'Symlinking aider config...'
+ln -sf ${HOME}/.dotfiles/aider.conf.yml ${HOME}/.aider.conf.yml
+
+echo "FYI aliases isn't being used..."
+
+echo "That's all for now!  You might want to close and reopen the shell."

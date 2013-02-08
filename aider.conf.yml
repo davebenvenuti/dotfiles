@@ -1,0 +1,11 @@
+read:
+  - ~/.aider/INSTRUCTIONS.md
+  - INSTRUCTIONS.md
+#model: deepseek/deepseek-coder
+model: openrouter/qwen/qwen3-coder
+dark-mode: true
+auto-commits: false
+editor: /usr/bin/nano -w
+watch-files: true
+# load is set as an environment variable in ~/.zshrc
+# it's likely  ~/.aider/autoexec.bat
