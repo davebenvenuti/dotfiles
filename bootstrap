@@ -20,4 +20,14 @@ echo 'Symlinking aliases...'
 
 ln -sf ~/.dotfiles/aliases ~/.aliases
 
+echo 'Installing el-get (emacs)...'
+
+if [ ! -e ~/.emacs.d/el-get ]; then
+  git clone git://github.com/dimitri/el-get.git ~/.emacs.d/el-get
+fi
+
+echo 'Symlinking emacs.d stuff...'
+
+ln -sf ~/.dotfiles/emacs/init.el ~/.emacs.d/init.el
+
 echo "That's all for now!"
