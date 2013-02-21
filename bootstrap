@@ -18,4 +18,8 @@ echo 'Symlinking zshrc...'
 
 ln -sf ~/.dotfiles/zsh/zshrc ~/.zshrc
 
+echo 'Symlinking aliases...'
+
+ln -sf ~/.dotfiles/aliases ~/.aliases
+
 echo "That's all for now!"
