@@ -10,6 +10,9 @@ ZSH_THEME="dbiddy"
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+if [ -e ~/.aliases ]; then
+  source ~/.aliases
+fi
 
 # Set to this to use case-sensitive completion
 # CASE_SENSITIVE="true"
