@@ -2,11 +2,9 @@
 
 DOTFILES_PATH="~/.dotfiles"
 
-echo 'Installing/updating oh-my-zsh...'
+if [ ! -e ~/.oh-my-zsh ]; then
+  echo 'Installing/updating oh-my-zsh...'
 
-if [ -e ~/.oh-my-zsh ]; then
-  upgrade_oh_my_zsh
-else
   git clone git://github.com/robbyrussell/oh-my-zsh.git ~/.oh-my-zsh
 fi
 
