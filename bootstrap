@@ -1,0 +1,21 @@
+#!/bin/sh
+
+DOTFILES_PATH="~/.dotfiles"
+
+echo 'Installing/updating oh-my-zsh...'
+
+if [ -e ~/.oh-my-zsh ]; then
+  upgrade_oh_my_zsh
+else
+  git clone git://github.com/robbyrussell/oh-my-zsh.git ~/.oh-my-zsh
+fi
+
+echo 'Symlinking custom zsh theme...'
+
+ln -sf ~/.dotfiles/zsh/dbiddy.zsh-theme ~/.oh-my-zsh/custom/dbiddy.zsh-theme
+
+echo 'Symlinking zshrc...'
+
+ln -sf ~/.dotfiles/zsh/zshrc ~/.zshrc
+
+echo "That's all for now!"
