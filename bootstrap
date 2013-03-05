@@ -30,4 +30,9 @@ echo 'Symlinking emacs.d stuff...'
 
 ln -sf ~/.dotfiles/emacs/init.el ~/.emacs.d/init.el
 
+echo 'Symlinking git config...'
+
+ln -sf ~/.dotfiles/gitconfig ~/.gitconfig
+
 echo "That's all for now!"
+
