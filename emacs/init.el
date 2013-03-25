@@ -120,3 +120,6 @@
                :after (lambda () (yaml-mode-hook)))))
 
 (el-get 'sync)
+
+;; Line numbers
+(global-linum-mode t)
