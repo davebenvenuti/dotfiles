@@ -20,9 +20,25 @@ echo 'Symlinking aliases...'
 
 ln -sf ~/.dotfiles/aliases ~/.aliases
 
-echo 'Installing el-get (emacs)...'
+if [ ! -e ~/.rbenv ]; then
+  echo 'Installing rbenv...'
+
+  git clone git://github.com/sstephenson/rbenv.git ~/.rbenv
+fi
+
+echo 'Sourcing ~/.zshrc...'
+
+source ~/.zshrc
+
+if [ ! -e ~/.rbenv/plugins/ruby-build ]; then  
+  echo 'Installing rbenv plugin ruby-build...'
+
+  git clone git://github.com/sstephenson/ruby-build.git ~/.rbenv/plugins/ruby-build
+fi
 
 if [ ! -e ~/.emacs.d/el-get ]; then
+  echo 'Installing el-get (emacs)...'
+
   git clone git://github.com/dimitri/el-get.git ~/.emacs.d/el-get
 fi
 
@@ -34,5 +50,5 @@ echo 'Symlinking git config...'
 
 ln -sf ~/.dotfiles/gitconfig ~/.gitconfig
 
-echo "That's all for now!"
+echo "That's all for now!  You might want to 'rbenv rehash'"
 
