@@ -8,13 +8,18 @@
 (setq inhibit-startup-message t)
 (fset 'yes-or-no-p 'y-or-n-p)
 (delete-selection-mode t)
-(scroll-bar-mode -1)
-(tool-bar-mode -1)
+;; if needed for mac issues
+(if window-system
+ (progn
+   (scroll-bar-mode -1)
+   (tool-bar-mode -1)
+   (set-fringe-style -1)
+   (tooltip-mode -1)
+   ))
+
 (blink-cursor-mode t)
 (show-paren-mode t)
 (column-number-mode t)
-(set-fringe-style -1)
-(tooltip-mode -1)
 
 ;; aesthetics bullshit
 ;; (set-frame-font "Menlo-16")
@@ -120,3 +125,6 @@
                :after (lambda () (yaml-mode-hook)))))
 
 (el-get 'sync)
+
+;; Line numbers
+(global-linum-mode t)

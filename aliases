@@ -1,1 +1,5 @@
-alias emacs='emacs -nw'
+if [ `uname` = "Darwin" ]; then
+  alias emacs='/usr/local/opt/emacs/bin/emacs -nw'
+else
+  alias emacs='emacs -nw'
+fi
