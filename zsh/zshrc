@@ -36,8 +36,24 @@ fi
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git heroku rbenv bundler)
+plugins=(git heroku rbenv)
 
 source $ZSH/oh-my-zsh.sh
 
 # Customize to your needs...
+export PGUSER=postgres
+
+function chpwd() {
+  emulate -L zsh
+  if [ `pwd` = "/home/dave/src/ping4app" ]; then
+    source .env
+  fi
+}
+
+export PATH="/usr/local/openresty/nginx/sbin:/home/dave/apps/android-sdk-linux/platform-tools:$PATH"
+
+export GOROOT=/usr/local/go
+export PATH=$PATH:$GOROOT/bin
+
+export PATH=$PATH:/home/dave/apps/android-sdk-linux/tools
+export ANDROID_HOME=/home/dave/apps/android-sdk-linux
