@@ -128,3 +128,5 @@
 
 ;; Line numbers
 (global-linum-mode t)
+(put 'downcase-region 'disabled nil)
+(put 'upcase-region 'disabled nil)
