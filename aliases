@@ -3,3 +3,19 @@ if [ `uname` = "Darwin" ]; then
 else
   alias emacs='emacs -nw'
 fi
+
+alias cqlsh='cqlsh -3'
+alias tb='torquebox run -J "-d64 -Xmx2G" -b 0.0.0.0'
+
+# noautocorrect
+alias rspec='noautocorrect rspec'
+
+alias ng='nginx -p `pwd`/ -c conf/nginx.conf'
+alias be='bundle exec'
+
+function tunnel {
+  just_host=`echo $1 | sed 's/[^@]+@//g'`
+  # ssh -f $1 -L $2:$just_host:$3 -N
+  ssh $1 -L $2:${just_host}:$3 -N
+}
+
