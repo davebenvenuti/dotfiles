@@ -66,12 +66,15 @@ if [[ `uname` =~ Linux ]]; then
 
   echo 'Symlinking xmonad config...'
 
-  ln -sf ~/.dotfiles/xmonad.hs ~/.xmonad/xmonad.hs
+  ln -sf ~/.dotfiles/xmonad/xmonad.hs ~/.xmonad/xmonad.hs
 
   echo 'Symlinking stalonebar config...'
 
-  ln -sf ~/.dotfiles/stalonetrayrc ~/.stalonetrayrc
+  ln -sf ~/.dotfiles/xmonad/stalonetrayrc ~/.stalonetrayrc
 
+  echo 'Symlinking xmobar config...'
+
+  ln -sf ~/.dotfiles/xmonad/xmobarrc ~/.xmobarrc
 fi
 
 echo "That's all for now!  You might want to 'rbenv rehash'"
