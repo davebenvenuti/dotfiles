@@ -41,14 +41,20 @@ plugins=(git heroku rbenv)
 source $ZSH/oh-my-zsh.sh
 
 # Customize to your needs...
-export PATH="/usr/local/openresty/nginx/sbin:/home/dave/apps/android-sdk-linux/platform-tools:$PATH"
+export PATH="/usr/local/openresty/nginx/sbin:/home/dave/apps/android-sdk-linux/tools:/home/dave/apps/android-sdk-linux/platform-tools:$PATH"
 
 export GOROOT=/usr/local/go
 export PATH=$PATH:$GOROOT/bin
 
-export PATH=$PATH:/home/dave/apps/android-sdk-linux/tools
 export ANDROID_HOME=/home/dave/apps/android-sdk-linux
 
 ### Added by the Heroku Toolbelt
 export PATH="/usr/local/heroku/bin:$PATH"
+
+. ~/.node/bin/activate
+
+if [ -e ~/.zshrc.private ]; then
+  # Stuff that shouldn't go in source control
+  . ~/.zshrc.private
+fi
 
