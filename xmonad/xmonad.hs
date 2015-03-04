@@ -36,7 +36,7 @@ main = do
     } `additionalKeys`
     [ ((mod1Mask .|. controlMask, xK_Right), nextWS)
     , ((mod1Mask .|. controlMask, xK_Left), prevWS)
-    , ((mod1Mask .|. controlMask, xK_l), spawn "gnome-screensaver-command -lock")
+    , ((mod1Mask .|. controlMask, xK_l), spawn "cinnamon-screensaver-command -l && xset dpms force off")
     , ((0 , xF86XK_AudioLowerVolume), spawn "~/.xmonad-pulsevolume/pulse-volume.sh decrease")
     , ((0 , xF86XK_AudioRaiseVolume), spawn "~/.xmonad-pulsevolume/pulse-volume.sh increase")
     ]
