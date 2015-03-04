@@ -18,3 +18,5 @@ alias n='. ~/.node/bin/activate'
 alias gist='gist -p'
 
 alias mocha='mocha --compilers coffee:coffee-script/register'
+
+alias nemo='nemo --no-desktop'

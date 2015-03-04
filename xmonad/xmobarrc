@@ -21,11 +21,11 @@ Config { font = "xft:Monospace:size=15"
                     , Run Com "uname" ["-s","-r"] "" 36000
                     , Run Date "%a %b %_d %Y %I:%M:%S%p" "date" 10
                     , Run StdinReader
-                    , Run Com "python" ["/home/dave/.xmonad-pulsevolume/show-volume.py"] "vol" 1
+                    , Run Com "bash" ["-l", "/home/dave/.dotfiles/scripts/current_volume.sh"] "vol" 1
                     , Run Com "python" ["/home/dave/.dotfiles/scripts/battery_remaining.py", "0"] "bat" 1
                     ]
        , sepChar = "%"
        , alignSep = "}{"
-       , template = "%StdinReader% }{ <fc=#ee9a00>%date%</fc>| %KBOS% | %vol% | %bat% | %uname%"
+       , template = "%StdinReader% }{ <fc=#ee9a00>%date%</fc>| %KBOS% | vol: %vol% | bat: %bat% | %uname%"
        }
 
