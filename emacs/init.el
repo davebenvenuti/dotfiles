@@ -130,3 +130,6 @@
 (global-linum-mode t)
 (put 'downcase-region 'disabled nil)
 (put 'upcase-region 'disabled nil)
+
+(setq scss-compile-at-save nil)
+
