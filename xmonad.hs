@@ -20,7 +20,10 @@ myManagementHooks = [
 
 main = do
   xmproc <- spawnPipe "xmobar"
-  
+
+  spawn "nm-applet"
+  spawn "cinnamon-settings-daemon"
+
   xmonad $ defaultConfig
     { modMask = mod4Mask -- rebind mod to special
     , manageHook = manageDocks <+> manageHook defaultConfig <+> composeAll myManagementHooks
