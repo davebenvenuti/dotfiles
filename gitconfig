@@ -16,3 +16,6 @@
 	ui = true
 [include]
   path = .gitconfig-private
+[user]
+	email = davebenvenuti@gmail.com
+	name = Dave Benvenuti
