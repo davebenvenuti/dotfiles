@@ -52,9 +52,11 @@ ln -sf ~/.dotfiles/gitconfig ~/.gitconfig
 
 if [[ `uname` =~ Linux ]]; then
 
-  echo 'Installing xmonad, xmobar, stalonetray...'
+  echo 'Installing xmonad, xmobar, stalonetray, xmonad-pulsevolume...'
 
   sudo apt-get install xmonad xmobar stalonetray
+
+  git clone git@github.com:bchurchill/xmonad-pulsevolume.git ~/.xmonad-pulsevolume
 
   if [ ! -d ~/.xmonad ]; then
     echo 'Creating xmonad config folder...'
