@@ -23,6 +23,7 @@ main = do
 
   spawn "nm-applet"
   spawn "cinnamon-settings-daemon"
+  spawn "stalonetray"
 
   xmonad $ defaultConfig
     { modMask = mod4Mask -- rebind mod to special
