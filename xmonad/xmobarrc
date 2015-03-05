@@ -15,10 +15,11 @@ Config { font = "xft:Monospace:size=15"
        , bgColor = "black"
        , fgColor = "grey"
 --       , position = Top
-       , position = Static { xpos = 0, ypos = 0, width=1920, height=25 }
+--     width is 1920 - width of stalone bar (which is 5 icons at 25 pixels apiece)
+       , position = Static { xpos = 0, ypos = 0, width=1795, height=25 }
        , lowerOnStart = True
        , commands = [ Run Weather "KBOS" ["-t","<station>: <tempF>F","-L","18","-H","25","--normal","green","--high","red","--low","lightblue"] 36000
-                    , Run Com "uname" ["-s","-r"] "" 36000
+--                    , Run Com "uname" ["-s","-r"] "" 36000
                     , Run Date "%a %b %_d %Y %I:%M:%S%p" "date" 10
                     , Run StdinReader
                     , Run Com "bash" ["-l", "/home/dave/.dotfiles/scripts/current_volume.sh"] "vol" 1
@@ -26,6 +27,6 @@ Config { font = "xft:Monospace:size=15"
                     ]
        , sepChar = "%"
        , alignSep = "}{"
-       , template = "%StdinReader% }{ <fc=#ee9a00>%date%</fc>| %KBOS% | vol: %vol% | bat: %bat% | %uname%"
+       , template = "%StdinReader% }{ %KBOS% | vol: %vol% | bat: %bat% | <fc=#ee9a00>%date%</fc>"
        }
 
