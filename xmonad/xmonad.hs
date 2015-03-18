@@ -24,9 +24,9 @@ main = do
 
   spawn "nm-applet"
   spawn "cinnamon-settings-daemon"
-  -- spawn "gnome-screensaver"
-  spawn "xscreensaver -no-splash"
---  spawn "xfce4-power-manager" -- for some rason we still need to spawn this again...
+-- spawn "gnome-screensaver"
+-- spawn "xscreensaver -no-splash"
+-- spawn "xfce4-power-manager" -- for some rason we still need to spawn this again...
   
   -- disable touchpad tap click
   spawn "xinput set-prop \"SynPS/2 Synaptics TouchPad\" \"Synaptics Tap Action\" 0"
