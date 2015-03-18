@@ -52,9 +52,9 @@ ln -sf ~/.dotfiles/gitconfig ~/.gitconfig
 
 if [[ `uname` =~ Linux ]]; then
 
-  echo 'Installing xmonad, xmobar, stalonetray, and xmonad-pulsevolume...'
+  echo 'Installing xmonad and related apps/scripts...'
 
-  sudo apt-get install xmonad xmobar stalonetray
+  sudo apt-get install xmonad xmobar stalonetray xautolock xscreensaver
 
   git clone git@github.com:bchurchill/xmonad-pulsevolume.git ~/.xmonad-pulsevolume
 
