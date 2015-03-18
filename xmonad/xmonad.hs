@@ -23,8 +23,10 @@ main = do
   xmproc <- spawnPipe "xmobar"
 
   spawn "nm-applet"
-  -- spawn "cinnamon-settings-daemon"
+  spawn "cinnamon-settings-daemon"
+  -- spawn "gnome-screensaver"
   spawn "xscreensaver -no-splash"
+--  spawn "xfce4-power-manager" -- for some rason we still need to spawn this again...
   
   -- disable touchpad tap click
   spawn "xinput set-prop \"SynPS/2 Synaptics TouchPad\" \"Synaptics Tap Action\" 0"
@@ -44,8 +46,9 @@ main = do
     } `additionalKeys`
     [ ((mod1Mask .|. controlMask, xK_Right), nextWS)
     , ((mod1Mask .|. controlMask, xK_Left), prevWS)
-    --, ((mod1Mask .|. controlMask, xK_l), spawn "cinnamon-screensaver-command -l && xset dpms force off")
-    , ((mod1Mask .|. controlMask, xK_l), spawn "xscreensaver-command -lock && xset dpms force off")
+    , ((mod1Mask .|. controlMask, xK_l), spawn "cinnamon-screensaver-command -l && xset dpms force off")
+    --, ((mod1Mask .|. controlMask, xK_l), spawn "gnome-screensaver-command -l && xset dpms force off")
+    --, ((mod1Mask .|. controlMask, xK_l), spawn "xscreensaver-command -lock && xset dpms force off")
     , ((0 , xF86XK_AudioLowerVolume), spawn "~/.xmonad-pulsevolume/pulse-volume.sh decrease")
     , ((0 , xF86XK_AudioRaiseVolume), spawn "~/.xmonad-pulsevolume/pulse-volume.sh increase")
     ]
