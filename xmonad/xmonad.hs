@@ -3,6 +3,7 @@
 --   http://iaindunning.com/2013/experiences-with-xmonad-and-ubuntu-12.html
 --   https://wiki.haskell.org/Xmonad/Config_archive/John_Goerzen's_Configuration
 --   https://github.com/Emantor/configs/blob/master/xmonad/xmonad.hs
+--   http://askubuntu.com/questions/403113/how-do-you-enable-tap-to-click-via-command-line-with-xmodmap
 
 import XMonad
 import XMonad.Hooks.DynamicLog
@@ -22,7 +23,14 @@ main = do
   xmproc <- spawnPipe "xmobar"
 
   spawn "nm-applet"
-  spawn "cinnamon-settings-daemon"
+  -- spawn "cinnamon-settings-daemon"
+  spawn "xscreensaver -no-splash"
+  
+  -- disable touchpad tap click
+  spawn "xinput set-prop \"SynPS/2 Synaptics TouchPad\" \"Synaptics Tap Action\" 0"
+  -- increase mouse speed a tad
+  spawn "xinput set-prop \"SynPS/2 Synaptics TouchPad\" \"Device Accel Constant Deceleration\" 2"
+  
   spawn "stalonetray"
 
   xmonad $ defaultConfig
@@ -36,7 +44,8 @@ main = do
     } `additionalKeys`
     [ ((mod1Mask .|. controlMask, xK_Right), nextWS)
     , ((mod1Mask .|. controlMask, xK_Left), prevWS)
-    , ((mod1Mask .|. controlMask, xK_l), spawn "cinnamon-screensaver-command -l && xset dpms force off")
+    --, ((mod1Mask .|. controlMask, xK_l), spawn "cinnamon-screensaver-command -l && xset dpms force off")
+    , ((mod1Mask .|. controlMask, xK_l), spawn "xscreensaver-command -lock && xset dpms force off")
     , ((0 , xF86XK_AudioLowerVolume), spawn "~/.xmonad-pulsevolume/pulse-volume.sh decrease")
     , ((0 , xF86XK_AudioRaiseVolume), spawn "~/.xmonad-pulsevolume/pulse-volume.sh increase")
     ]
