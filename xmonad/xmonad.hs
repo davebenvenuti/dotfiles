@@ -22,20 +22,7 @@ myManagementHooks = [
 main = do
   xmproc <- spawnPipe "xmobar"
 
-  spawn "nm-applet"
---  spawn "cinnamon-settings-daemon"
-  spawn "gnome-screensaver"
--- spawn "xscreensaver -no-splash"
-  
-  -- xfce4-power-manager sometimes conflicts with the indicator-power package
-  spawn "xfce4-power-manager --no-daemon"
-  
-  -- disable touchpad tap click
-  spawn "xinput set-prop \"SynPS/2 Synaptics TouchPad\" \"Synaptics Tap Action\" 0"
-  -- increase mouse speed a tad
-  spawn "xinput set-prop \"SynPS/2 Synaptics TouchPad\" \"Device Accel Constant Deceleration\" 2"
-  
-  spawn "stalonetray"
+  spawn "~/.xmonad/startup"
 
   xmonad $ defaultConfig
     { modMask = mod4Mask -- rebind mod to special

@@ -1,0 +1,26 @@
+#!/bin/bash
+
+# Network Manager
+nm-applet &
+
+# Screensaver
+#   other options:
+#     cinnamon-settings-daemon
+#     xscreensaver -no-splash
+gnome-screensaver &
+  
+# xfce4-power-manager sometimes conflicts with the indicator-power package
+xfce4-power-manager --no-daemon &
+
+# Background cycler
+~/.dotfiles/scripts/background_cycler.sh &
+
+# Disable touchpad tap click
+xinput set-prop "SynPS/2 Synaptics TouchPad" "Synaptics Tap Action" 0 &
+
+# Increase mouse speed a tad
+xinput set-prop "SynPS/2 Synaptics TouchPad" "Device Accel Constant Deceleration" 2 &
+
+# Last but not least, stalonetray for notification icons (nm-applet, pidgin, etc)
+stalonetray &
+
