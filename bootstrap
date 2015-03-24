@@ -75,6 +75,9 @@ if [[ `uname` =~ Linux ]]; then
   echo 'Symlinking xmobar config...'
 
   ln -sf ~/.dotfiles/xmonad/xmobarrc ~/.xmobarrc
+
+  echo 'Symlinking startup script...'
+  ln -sf ~/dotfiles/xmonad/startup ~/.xmonad/startup
 fi
 
 echo "That's all for now!  You might want to 'rbenv rehash'"
