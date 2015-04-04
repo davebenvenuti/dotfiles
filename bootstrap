@@ -50,35 +50,5 @@ echo 'Symlinking git config...'
 
 ln -sf ~/.dotfiles/gitconfig ~/.gitconfig
 
-if [[ `uname` =~ Linux ]]; then
-
-  echo 'Installing xmonad and related apps/scripts...'
-
-  sudo apt-get install xmonad xmobar stalonetray xautolock xscreensaver imwheel xfce4-power-manager cinnamon-settings-daemon feh
-
-  git clone git@github.com:bchurchill/xmonad-pulsevolume.git ~/.xmonad-pulsevolume
-
-  if [ ! -d ~/.xmonad ]; then
-    echo 'Creating xmonad config folder...'
-
-    mkdir ~/.xmonad
-  fi
-
-  echo 'Symlinking xmonad config...'
-
-  ln -sf ~/.dotfiles/xmonad/xmonad.hs ~/.xmonad/xmonad.hs
-
-  echo 'Symlinking stalonebar config...'
-
-  ln -sf ~/.dotfiles/xmonad/stalonetrayrc ~/.stalonetrayrc
-
-  echo 'Symlinking xmobar config...'
-
-  ln -sf ~/.dotfiles/xmonad/xmobarrc ~/.xmobarrc
-
-  echo 'Symlinking startup script...'
-  ln -sf ~/dotfiles/xmonad/startup ~/.xmonad/startup
-fi
-
 echo "That's all for now!  You might want to 'rbenv rehash'"
 
