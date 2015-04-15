@@ -133,3 +133,8 @@
 
 (setq scss-compile-at-save nil)
 
+(add-to-list 'load-path "~/.emacs.d/modes/")
+
+(add-to-list 'auto-mode-alist '("\\.jsx\\'" . jsx-mode))
+(autoload 'jsx-mode "jsx-mode" "JSX mode" t)
+

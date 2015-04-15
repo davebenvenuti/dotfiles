@@ -45,6 +45,7 @@ fi
 echo 'Symlinking emacs.d stuff...'
 
 ln -sf ~/.dotfiles/emacs/init.el ~/.emacs.d/init.el
+ln -sf ~/.dotfiles/emacs/modes ~/.emacs.d/modes
 
 echo 'Symlinking git config...'
 
