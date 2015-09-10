@@ -41,7 +41,7 @@ plugins=(git heroku rbenv)
 source $ZSH/oh-my-zsh.sh
 
 # Customize to your needs...
-export PATH="/usr/local/openresty/nginx/sbin:/home/dave/apps/android-sdk-linux/tools:/home/dave/apps/android-sdk-linux/platform-tools:$PATH"
+export PATH="/home/dave/bin:/home/dave/apps/android-sdk-linux/tools:/home/dave/apps/android-sdk-linux/platform-tools:$PATH"
 
 export GOROOT=/usr/local/go
 export PATH=$PATH:$GOROOT/bin
