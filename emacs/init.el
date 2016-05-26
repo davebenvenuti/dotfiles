@@ -8,6 +8,9 @@
 (setq inhibit-startup-message t)
 (fset 'yes-or-no-p 'y-or-n-p)
 (delete-selection-mode t)
+
+(which-function-mode 1)
+
 ;; if needed for mac issues
 (if window-system
  (progn
@@ -23,7 +26,7 @@
 
 ;; aesthetics bullshit
 ;; (set-frame-font "Menlo-16")
-;; (load-theme 'tango)
+(load-theme 'manoj-dark)
 
 ;; el-get ELPA stuff
 (require 'package)
