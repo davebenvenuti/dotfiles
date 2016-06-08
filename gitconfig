@@ -19,3 +19,5 @@
 [user]
 	email = davebenvenuti@gmail.com
 	name = Dave Benvenuti
+[push]
+	default = matching
