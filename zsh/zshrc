@@ -15,6 +15,10 @@ if [ -e ~/.aliases ]; then
   source ~/.aliases
 fi
 
+if [ -e ~/.aliases.private ]; then
+  source ~/.aliases.private
+fi
+
 # Set to this to use case-sensitive completion
 # CASE_SENSITIVE="true"
 
