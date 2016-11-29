@@ -12,6 +12,7 @@
 	rmremote = !sh -c \"git push origin :heads/\\$0\"
 	put = push origin HEAD
 	get = !git pull && git submodule init && git submodule update
+	permission-reset = !git diff -p -R --no-color | grep -E \"^(diff|(old|new) mode)\" --color=never | git apply
 [color]
 	ui = true
 [include]
