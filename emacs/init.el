@@ -71,7 +71,7 @@
 
 
 ;; (setq el-get-sources
-;;       '((:name ruby-mode 
+;;       '((:name ruby-mode
 ;;                :type elpa
 ;;                :load "ruby-mode.el")
 ;;         (:name inf-ruby  :type elpa)
@@ -91,20 +91,20 @@
 ;;                :type git
 ;;                :url "https://github.com/eschulte/rhtml.git"
 ;;                :features rhtml-mode)
-;;         (:name yaml-mode 
+;;         (:name yaml-mode
 ;;                :type git
 ;;                :url "http://github.com/yoshiki/yaml-mode.git"
 ;;                :features yaml-mode)))
 
 (setq el-get-sources
-      '((:name ruby-mode 
+      '((:name ruby-mode
                :type elpa
                :load "ruby-mode.el"
                :after (lambda () (ruby-mode-hook)))
         (:name inf-ruby  :type elpa)
         (:name ruby-compilation :type elpa)
-        (:name css-mode 
-               :type elpa 
+        (:name css-mode
+               :type elpa
                :after (lambda () (css-mode-hook)))
         (:name textmate
                :type git
@@ -121,7 +121,7 @@
                :url "https://github.com/eschulte/rhtml.git"
                :features rhtml-mode
                :after (lambda () (rhtml-mode-hook)))
-        (:name yaml-mode 
+        (:name yaml-mode
                :type git
                :url "http://github.com/yoshiki/yaml-mode.git"
                :features yaml-mode
@@ -134,10 +134,17 @@
 (put 'downcase-region 'disabled nil)
 (put 'upcase-region 'disabled nil)
 
+
 (setq scss-compile-at-save nil)
 
+
 (add-to-list 'load-path "~/.emacs.d/modes/")
+
 
 (add-to-list 'auto-mode-alist '("\\.jsx\\'" . jsx-mode))
 (autoload 'jsx-mode "jsx-mode" "JSX mode" t)
 
+
+(add-to-list 'load-path "/some/path/neotree")
+(require 'neotree)
+(global-set-key [f8] 'neotree-toggle)
