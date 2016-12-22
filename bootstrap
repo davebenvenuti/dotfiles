@@ -51,5 +51,9 @@ echo 'Symlinking git config...'
 
 ln -sf ~/.dotfiles/gitconfig ~/.gitconfig
 
+echo 'Symlinking tmux config...'
+
+ln -sf ~/.dotfiles/tmux.conf ~/.tmux.conf
+
 echo "That's all for now!  You might want to 'rbenv rehash'"
 
