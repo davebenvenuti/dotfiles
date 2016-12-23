@@ -20,3 +20,7 @@ alias gist='gist -p'
 alias mocha='mocha --compilers coffee:coffee-script/register'
 
 alias nemo='nemo --no-desktop'
+
+alias bu='xdotool key XF86MonBrightnessUp'
+alias bd='xdotool key XF86MonBrightnessDown'
+alias xclip='xclip -selection c'
