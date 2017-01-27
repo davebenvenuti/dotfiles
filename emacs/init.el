@@ -154,3 +154,5 @@
 (add-to-list 'load-path "/some/path/neotree")
 (require 'neotree)
 (global-set-key [f8] 'neotree-toggle)
+
+(add-hook 'before-save-hook 'delete-trailing-whitespace)
