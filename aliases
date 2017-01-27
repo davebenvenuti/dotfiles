@@ -24,3 +24,10 @@ alias nemo='nemo --no-desktop'
 alias bu='xdotool key XF86MonBrightnessUp'
 alias bd='xdotool key XF86MonBrightnessDown'
 alias xclip='xclip -selection c'
+
+_mp4compress() {
+    echo ffmpeg -i "$1" -vcodec h264 -b:v 1000k "$2"
+    ffmpeg -i "$1" -vcodec h264 -b:v 1000k "$2"
+}
+
+alias mp4compress=_mp4compress
