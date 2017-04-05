@@ -1,5 +1,7 @@
 ;; Much of this is from http://viget.com/extend/emacs-24-rails-development-environment-from-scratch-to-productive-in-5-minu
 
+(setq warning-minimum-level :emergency)
+
 (push "/usr/local/bin" exec-path)
 (setq make-backup-files nil)
 (setq auto-save-default nil)
