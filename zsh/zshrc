@@ -55,8 +55,10 @@ export ANDROID_HOME=/home/dave/apps/android-sdk-linux
 ### Added by the Heroku Toolbelt
 export PATH="/usr/local/heroku/bin:$PATH"
 
-NODE_ENV_DISABLE_PROMPT=1. ~/.node/bin/activate
-VIRTUAL_ENV_DISABLE_PROMPT=1 . ~/.python2.7/bin/activate
+export NODE_VIRTUAL_ENV_DISABLE_PROMPT=1
+. ~/.node/bin/activate
+export VIRTUAL_ENV_DISABLE_PROMPT=1
+. ~/.python2.7/bin/activate
 
 if [ -e ~/.zshrc.private ]; then
   # Stuff that shouldn't go in source control
@@ -64,3 +66,6 @@ if [ -e ~/.zshrc.private ]; then
 fi
 
 setopt HIST_IGNORE_SPACE
+
+export GOPATH=$HOME/go
+export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
