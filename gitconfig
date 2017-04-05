@@ -22,3 +22,5 @@
 	name = Dave Benvenuti
 [push]
 	default = matching
+[pull]
+	rebase = true
