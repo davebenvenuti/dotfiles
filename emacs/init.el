@@ -172,3 +172,5 @@
 
 (ido-mode t)
 (ido-vertical-mode t)
+
+(menu-bar-mode -1)
