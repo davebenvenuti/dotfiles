@@ -12,6 +12,11 @@ echo 'Symlinking custom zsh theme...'
 
 ln -sf ~/.dotfiles/zsh/dbiddy.zsh-theme ~/.oh-my-zsh/custom/dbiddy.zsh-theme
 
+echo 'Symlinking custom zsh plugins...'
+
+mkdir -p ~/.oh-my-zsh/custom/plugins/kubectl-prompt
+ln -sf ~/.dotfiles/zsh/kubectl-prompt.plugin.zsh ~/.oh-my-zsh/custom/plugins/kubectl-prompt/
+
 echo 'Symlinking zshrc...'
 
 ln -sf ~/.dotfiles/zsh/zshrc ~/.zshrc
@@ -26,11 +31,7 @@ if [ ! -e ~/.rbenv ]; then
   git clone git://github.com/sstephenson/rbenv.git ~/.rbenv
 fi
 
-echo 'Sourcing ~/.zshrc...'
-
-source ~/.zshrc
-
-if [ ! -e ~/.rbenv/plugins/ruby-build ]; then  
+if [ ! -e ~/.rbenv/plugins/ruby-build ]; then
   echo 'Installing rbenv plugin ruby-build...'
 
   git clone git://github.com/sstephenson/ruby-build.git ~/.rbenv/plugins/ruby-build
@@ -55,5 +56,4 @@ echo 'Symlinking tmux config...'
 
 ln -sf ~/.dotfiles/tmux.conf ~/.tmux.conf
 
-echo "That's all for now!  You might want to 'rbenv rehash'"
-
+echo "That's all for now!  You might want to close and reopen the shell"
