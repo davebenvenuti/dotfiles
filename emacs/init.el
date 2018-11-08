@@ -6,6 +6,9 @@
 (setq make-backup-files nil)
 (setq auto-save-default nil)
 (setq-default tab-width 2)
+(setq js-indent-level 2)
+(setq typescript-indent-level 2)
+(setq nginx-indent-level 2)
 (setq-default indent-tabs-mode nil)
 (setq inhibit-startup-message t)
 (fset 'yes-or-no-p 'y-or-n-p)
@@ -49,7 +52,10 @@
  '(package-archives
    (quote
     (("gnu" . "http://elpa.gnu.org/packages/")
-          ("melpa-stable" . "http://stable.melpa.org/packages/")))))
+     ("melpa-stable" . "http://stable.melpa.org/packages/"))))
+ '(package-selected-packages
+   (quote
+    (graphql-mode json-navigator solidity-mode rjsx-mode tern-context-coloring tern-auto-complete tern bundler ag ruby-test-mode haskell-mode git-gutter flymake-ruby floobits))))
 
 (add-to-list 'load-path "~/.emacs.d/el-get")
 (require 'el-get)
@@ -160,11 +166,14 @@
 (add-to-list 'load-path "~/.emacs.d/modes/")
 
 
-(add-to-list 'auto-mode-alist '("\\.jsx\\'" . jsx-mode))
-(autoload 'jsx-mode "jsx-mode" "JSX mode" t)
+;; (add-to-list 'auto-mode-alist '("\\.jsx\\'" . jsx-mode))
+;; (autoload 'jsx-mode "jsx-mode" "JSX mode" t)
 
 
-(add-to-list 'load-path "/some/path/neotree")
+(add-to-list 'auto-mode-alist '("\\.jsx\\'" . rjsx-mode))
+(autoload 'rjsx-mode "rjsx-mode" "JSX mode" t)
+
+;; (add-to-list 'load-path "/some/path/neotree")
 (require 'neotree)
 (global-set-key [f8] 'neotree-toggle)
 
@@ -173,4 +182,21 @@
 (ido-mode t)
 (ido-vertical-mode t)
 
+(add-to-list 'auto-mode-alist '("\\.cjsx" . coffee-mode))
+
 (menu-bar-mode -1)
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
+
+;(eval-after-load 'ruby-mode '(require 'plugins/rails-apidock))
+(require 'eclim)
+(setq eclimd-autostart t)
+
+(defun my-java-mode-hook ()
+    (eclim-mode t))
+
+(add-hook 'java-mode-hook 'my-java-mode-hook)
