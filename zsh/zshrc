@@ -40,12 +40,12 @@ fi
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git heroku rbenv)
+plugins=(git heroku rbenv dotenv kubectl kubectl-prompt)
 
 source $ZSH/oh-my-zsh.sh
 
 # Customize to your needs...
-export PATH="/home/dave/bin:/home/dave/apps/android-sdk-linux/tools:/home/dave/apps/android-sdk-linux/platform-tools:/opt/wine-staging/bin:$PATH"
+export PATH="/home/dave/bin:/snap/bin:/home/dave/.cargo/bin:/home/dave/apps/android-sdk-linux/tools:/home/dave/apps/android-sdk-linux/platform-tools:/opt/wine-staging/bin:$PATH"
 
 export GOROOT=/usr/local/go
 export PATH=$PATH:$GOROOT/bin
@@ -56,9 +56,9 @@ export ANDROID_HOME=/home/dave/apps/android-sdk-linux
 export PATH="/usr/local/heroku/bin:$PATH"
 
 export NODE_VIRTUAL_ENV_DISABLE_PROMPT=1
-. ~/.node/bin/activate
+. ~/.node-8.11.3/bin/activate
 export VIRTUAL_ENV_DISABLE_PROMPT=1
-. ~/.python2.7/bin/activate
+. ~/.python-2.7.14/bin/activate
 
 if [ -e ~/.zshrc.private ]; then
   # Stuff that shouldn't go in source control
@@ -68,4 +68,13 @@ fi
 setopt HIST_IGNORE_SPACE
 
 export GOPATH=$HOME/go
-export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
+export PATH=$PATH:$GOROOT/bin:$GOPATH/bin:$HOME/.local/bin
+if [[ "$SSH_CONNECTION" != "" ]];then
+  if [[ "$SSH_AUTH_SOCK" = "" ]]; then
+    ssh-agent /bin/zsh
+  fi
+
+  if [[ "$TMUX" = "" ]]; then
+    tmux new -s remote || tmux attach -t remote
+  fi
+fi
