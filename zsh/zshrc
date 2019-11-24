@@ -40,7 +40,8 @@ fi
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git heroku rbenv dotenv kubectl kubectl-prompt)
+# plugins=(git heroku rbenv dotenv kubectl kubectl-prompt)
+plugins=(git heroku rbenv dotenv)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -58,7 +59,7 @@ export PATH="/usr/local/heroku/bin:$PATH"
 export NODE_VIRTUAL_ENV_DISABLE_PROMPT=1
 . ~/.node-8.11.3/bin/activate
 export VIRTUAL_ENV_DISABLE_PROMPT=1
-. ~/.python-2.7.14/bin/activate
+# . ~/.python-2.7.14/bin/activate
 
 if [ -e ~/.zshrc.private ]; then
   # Stuff that shouldn't go in source control
