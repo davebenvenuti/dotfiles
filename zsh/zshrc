@@ -79,3 +79,6 @@ if [[ "$SSH_CONNECTION" != "" ]];then
     tmux new -s remote || tmux attach -t remote
   fi
 fi
+
+export VASSAL_MODULES="${HOME}/vassal/modules"
+alias vassal='docker run -d --rm --name vassal -e DISPLAY -v $XAUTHORITY:/root/.Xauthority --net=host --ipc=host --security-opt=no-new-privileges -v ${VASSAL_MODULES}:/root/modules -v $HOME/.VASSAL:/root/.VASSAL mablanco/vassal'
