@@ -25,7 +25,7 @@ order += "load"
 order += "tztime local"
 
 load {
-	format = "Load %1min"
+	format = " Load %1min"
 }
 
 disk "/" {
@@ -36,18 +36,18 @@ disk "/" {
 }
 
 wireless _first_ {
-	format_up =  "📶 (%quality at %essid) %ip "
+	format_up =  " 📶 (%quality at %essid) %ip "
 	format_down = "💀 WiFi"
 
   color_good = "#00FF00"
 }
 
 tztime local {
-  format = " %h-%d %H:%M:%S"
+  format = " %h-%d %I:%M:%S %p"
 }
 
 memory {
-  format = "🐏 Free: %free, Available: %available, Total: %total"
+  format = " 🐏 Free: %free, Available: %available, Total: %total"
   threshold_degraded = "10%"
   threshold_critical = "5%"  
 }
