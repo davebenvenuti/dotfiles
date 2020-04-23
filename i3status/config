@@ -29,7 +29,10 @@ load {
 }
 
 disk "/" {
-	format = "🖴 %avail " 
+	format = "🖴 %avail "
+  low_threshold = "5"
+  format_below_threshold = "🚨 🖴  %percentage_avail"
+  threshold_type =  "percentage_free"
 }
 
 wireless _first_ {
@@ -44,5 +47,7 @@ tztime local {
 }
 
 memory {
-  format = "🐏 Free: %free | Available: %available | Total: %total"
+  format = "🐏 Free: %free, Available: %available, Total: %total"
+  threshold_degraded = "10%"
+  threshold_critical = "5%"  
 }
