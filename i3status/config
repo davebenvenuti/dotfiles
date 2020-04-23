@@ -13,12 +13,12 @@ general {
 	color_good = "#BBBBBB"
 	color_bad = "#CC1616"
 	color_degraded = "#55858E"
-	# interval = 2
+	interval = 2
 }
 
 order += "disk /"
 order += "memory"
-order += "wireless wlan0"
+order += "wireless _first_"
 order += "ethernet eth0"
 order += "battery"
 order += "load"
@@ -29,14 +29,20 @@ load {
 }
 
 disk "/" {
-	format = " 🖴 %avail " 
+	format = "🖴 %avail " 
 }
 
-wireless wlan0 {
+wireless _first_ {
 	format_up =  "📶 (%quality at %essid) %ip "
 	format_down = "💀 WiFi"
+
+  color_good = "#00FF00"
 }
 
 tztime local {
-  format = " %h-%d %H:%M"
+  format = " %h-%d %H:%M:%S"
+}
+
+memory {
+  format = "🐏 Free: %free | Available: %available | Total: %total"
 }
