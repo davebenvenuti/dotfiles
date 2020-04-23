@@ -55,5 +55,8 @@ ln -sf ~/.dotfiles/gitconfig ~/.gitconfig
 echo 'Symlinking tmux config...'
 
 ln -sf ~/.dotfiles/tmux.conf ~/.tmux.conf
+echo 'Symlinking .i3status'
+mkdir -p ~/.config/i3status
+ln -sf ~/.dotfiles/i3status/config ~/.config/i3status/config
 
 echo "That's all for now!  You might want to close and reopen the shell"
