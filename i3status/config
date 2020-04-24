@@ -20,7 +20,7 @@ order += "disk /"
 order += "memory"
 order += "wireless _first_"
 order += "ethernet eth0"
-order += "battery"
+order += "battery 0"
 order += "load"
 order += "tztime local"
 
@@ -50,4 +50,17 @@ memory {
   format = " 🐏 Free: %free, Available: %available, Total: %total"
   threshold_degraded = "10%"
   threshold_critical = "5%"  
+}
+
+battery 0 {
+  format = " %status %percentage"
+  format_down = "No battery"
+  status_chr = "⚡ CHR"
+  status_bat = "🔋 BAT"
+  status_unk = "? UNK"
+  status_full = "☻ FULL"
+  low_threshold = "25"
+  threshold_type = "percentage"
+  integer_battery_capacity = "true"
+  last_full_capacity = "true"
 }
