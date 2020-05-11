@@ -33,32 +33,23 @@
 ;; (set-frame-font "Menlo-16")
 (load-theme 'manoj-dark)
 
-;; el-get ELPA stuff
 (require 'package)
-(setq package-archives (cons '("tromey" . "http://tromey.com/elpa/") package-archives))
-(add-to-list 'package-archives
-             '("melpa" . "https://melpa.org/packages/") t)
-(when (< emacs-major-version 24)
-  ;; For important compatibility libraries like cl-lib
-    (add-to-list 'package-archives '("gnu" . "https://elpa.gnu.org/packages/")))
+(setq package-archives '(("gnu" . "http://elpa.gnu.org/packages/")
+                         ("melpa" . "http://melpa.org/packages/")))
+
 (package-initialize)
 
-(require 'package)
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(package-archives
-   (quote
-    (("gnu" . "http://elpa.gnu.org/packages/")
-     ("melpa-stable" . "http://stable.melpa.org/packages/"))))
- '(package-selected-packages
-   (quote
-    (graphql-mode json-navigator solidity-mode rjsx-mode tern-context-coloring tern-auto-complete tern bundler ag ruby-test-mode haskell-mode git-gutter flymake-ruby floobits))))
+(unless package-archive-contents
+  (package-refresh-contents))
 
-(add-to-list 'load-path "~/.emacs.d/el-get")
-(require 'el-get)
+;;(setq package-list '(ruby-mode rjsx-mode ido-mode ido-vertical-mode))
+(setq package-list '(ruby-mode rjsx-mode neotree ag ivy))
+
+(dolist (package package-list)
+  (unless (package-installed-p package)
+    (package-install package)))
+
+(require 'package)
 
 ;; ruby-mode/etc stuff
 
@@ -92,70 +83,13 @@
                               (setq css-indent-level 2)
                               (setq css-indent-offset 2))))
 
-;; el-get config
 
+(global-linum-mode)
 
-;; (setq el-get-sources
-;;       '((:name ruby-mode
-;;                :type elpa
-;;                :load "ruby-mode.el")
-;;         (:name inf-ruby  :type elpa)
-;;         (:name ruby-compilation :type elpa)
-;;         (:name css-mode :type elpa)
-;;         (:name textmate
-;;                :type git
-;;                :url "git://github.com/defunkt/textmate.el"
-;;                :load "textmate.el")
-;;         (:name rvm
-;;                :type git
-;;                :url "http://github.com/djwhitt/rvm.el.git"
-;;                :load "rvm.el"
-;;                :compile ("rvm.el")
-;;                :after (lambda() (rvm-use-default)))
-;;         (:name rhtml
-;;                :type git
-;;                :url "https://github.com/eschulte/rhtml.git"
-;;                :features rhtml-mode)
-;;         (:name yaml-mode
-;;                :type git
-;;                :url "http://github.com/yoshiki/yaml-mode.git"
-;;                :features yaml-mode)))
+(ivy-mode)
+(setq ivy-use-virtual-buffers t)
+(setq ivy-count-format "(%d/%d) ")
 
-(setq el-get-sources
-      '((:name ruby-mode
-               :type elpa
-               :load "ruby-mode.el"
-               :after (lambda () (ruby-mode-hook)))
-        (:name inf-ruby  :type elpa)
-        (:name ruby-compilation :type elpa)
-        (:name css-mode
-               :type elpa
-               :after (lambda () (css-mode-hook)))
-        (:name textmate
-               :type git
-               :url "git://github.com/defunkt/textmate.el"
-               :load "textmate.el")
-        (:name rvm
-               :type git
-               :url "http://github.com/djwhitt/rvm.el.git"
-               :load "rvm.el"
-               :compile ("rvm.el")
-               :after (lambda() (rvm-use-default)))
-        (:name rhtml
-               :type git
-               :url "https://github.com/eschulte/rhtml.git"
-               :features rhtml-mode
-               :after (lambda () (rhtml-mode-hook)))
-        (:name yaml-mode
-               :type git
-               :url "http://github.com/yoshiki/yaml-mode.git"
-               :features yaml-mode
-               :after (lambda () (yaml-mode-hook)))))
-
-(el-get 'sync)
-
-;; Line numbers
-(global-linum-mode t)
 (put 'downcase-region 'disabled nil)
 (put 'upcase-region 'disabled nil)
 
@@ -177,26 +111,27 @@
 (require 'neotree)
 (global-set-key [f8] 'neotree-toggle)
 
-(add-hook 'before-save-hook 'delete-trailing-whitespace)
+(add-hook 'before-save-hook 'whitespace-cleanup)
 
-(ido-mode t)
-(ido-vertical-mode t)
+;;(ido-mode t)
+;;(ido-vertical-mode t)
 
 (add-to-list 'auto-mode-alist '("\\.cjsx" . coffee-mode))
 
 (menu-bar-mode -1)
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- )
 
-;(eval-after-load 'ruby-mode '(require 'plugins/rails-apidock))
-(require 'eclim)
-(setq eclimd-autostart t)
+(define-globalized-minor-mode global-hs-minor-mode
+  hs-minor-mode hs-minor-mode)
 
-(defun my-java-mode-hook ()
-    (eclim-mode t))
+; (global-hs-minor-mode 1)
 
-(add-hook 'java-mode-hook 'my-java-mode-hook)
+(eval-after-load "hideshow"
+  '(add-to-list 'hs-special-modes-alist
+    `(ruby-mode
+      ,(rx (or "def" "class" "module" "do" "{" "[")) ; Block start
+      ,(rx (or "}" "]" "end"))                       ; Block end
+      ,(rx (or "#" "=begin"))                        ; Comment start
+      ruby-forward-sexp nil)))
+
+(global-set-key (kbd "C-c h") 'hs-hide-block)
+(global-set-key (kbd "C-c s") 'hs-show-block)
