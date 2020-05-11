@@ -34,3 +34,5 @@ alias dcitest='docker-compose -f docker-compose.itest.yml'
 function podname() {
   kubectl get pods | grep $1 | grep "Running" | awk '{print $1}'
 }
+
+alias cgrep="grep --color=always"
