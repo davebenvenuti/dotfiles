@@ -54,7 +54,7 @@ export PATH=$PATH:$GOROOT/bin
 export ANDROID_HOME=/home/dave/apps/android-sdk-linux
 
 ### Added by the Heroku Toolbelt
-export PATH="/usr/local/heroku/bin:$PATH"
+export PATH="/usr/local/heroku/bin:/home/dave/apps:$PATH"
 
 export NODE_VIRTUAL_ENV_DISABLE_PROMPT=1
 . ~/.node-8.11.3/bin/activate
