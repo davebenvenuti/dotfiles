@@ -43,7 +43,7 @@
   (package-refresh-contents))
 
 ;;(setq package-list '(ruby-mode rjsx-mode ido-mode ido-vertical-mode))
-(setq package-list '(ruby-mode rjsx-mode neotree ag ivy))
+(setq package-list '(ruby-mode rjsx-mode neotree ag ivy yaml-mode))
 
 (dolist (package package-list)
   (unless (package-installed-p package)
@@ -135,3 +135,15 @@
 
 (global-set-key (kbd "C-c h") 'hs-hide-block)
 (global-set-key (kbd "C-c s") 'hs-show-block)
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(package-selected-packages (quote (yaml-mode rjsx-mode neotree ivy ag))))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
