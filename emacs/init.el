@@ -43,7 +43,7 @@
   (package-refresh-contents))
 
 ;;(setq package-list '(ruby-mode rjsx-mode ido-mode ido-vertical-mode))
-(setq package-list '(ruby-mode rjsx-mode neotree ag ivy yaml-mode))
+(setq package-list '(ruby-mode rjsx-mode neotree ag ivy yaml-mode terraform-mode))
 
 (dolist (package package-list)
   (unless (package-installed-p package)
@@ -140,7 +140,7 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(package-selected-packages (quote (yaml-mode rjsx-mode neotree ivy ag))))
+ '(package-selected-packages (quote (terraform-mode yaml-mode rjsx-mode neotree ivy ag))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
