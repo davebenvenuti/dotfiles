@@ -1,67 +1,67 @@
-#!/bin/sh
+#!/bin/bash
 
-DOTFILES_PATH="~/.dotfiles"
+DOTFILES_PATH="${HOME}/.dotfiles"
 
 if [ ! -e ~/.oh-my-zsh ]; then
   echo 'Installing/updating oh-my-zsh...'
 
-  git clone git://github.com/robbyrussell/oh-my-zsh.git ~/.oh-my-zsh
+  git clone git://github.com/robbyrussell/oh-my-zsh.git ${HOME}/.oh-my-zsh
 fi
 
 echo 'Symlinking custom zsh theme...'
 
-ln -sf ~/.dotfiles/zsh/dbiddy.zsh-theme ~/.oh-my-zsh/custom/dbiddy.zsh-theme
+ln -sf ${HOME}/.dotfiles/zsh/dbiddy.zsh-theme ${HOME}/.oh-my-zsh/custom/dbiddy.zsh-theme
 
 echo 'Symlinking custom zsh plugins...'
 
-mkdir -p ~/.oh-my-zsh/custom/plugins/kubectl-prompt
-ln -sf ~/.dotfiles/zsh/kubectl-prompt.plugin.zsh ~/.oh-my-zsh/custom/plugins/kubectl-prompt/
+mkdir -p ${HOME}/.oh-my-zsh/custom/plugins/kubectl-prompt
+ln -sf ${HOME}/.dotfiles/zsh/kubectl-prompt.plugin.zsh ${HOME}/.oh-my-zsh/custom/plugins/kubectl-prompt/
 
 echo 'Symlinking zshrc...'
 
-ln -sf ~/.dotfiles/zsh/zshrc ~/.zshrc
+ln -sf ${HOME}/.dotfiles/zsh/zshrc ${HOME}/.zshrc
 
 echo 'Symlinking aliases...'
 
-ln -sf ~/.dotfiles/aliases ~/.aliases
+ln -sf ${HOME}/.dotfiles/aliases ${HOME}/.aliases
 
-if [ ! -e ~/.rbenv ]; then
+if [ ! -e ${HOME}/.rbenv ]; then
   echo 'Installing rbenv...'
 
-  git clone git://github.com/sstephenson/rbenv.git ~/.rbenv
+  git clone git://github.com/sstephenson/rbenv.git ${HOME}/.rbenv
 fi
 
-if [ ! -e ~/.rbenv/plugins/ruby-build ]; then
+if [ ! -e ${HOME}/.rbenv/plugins/ruby-build ]; then
   echo 'Installing rbenv plugin ruby-build...'
 
-  git clone git://github.com/sstephenson/ruby-build.git ~/.rbenv/plugins/ruby-build
+  git clone git://github.com/sstephenson/ruby-build.git ${HOME}/.rbenv/plugins/ruby-build
 fi
 
-if [ ! -e ~/.emacs.d/el-get ]; then
+if [ ! -e ${HOME}/.emacs.d/el-get ]; then
   echo 'Installing el-get (emacs)...'
 
-  git clone git://github.com/dimitri/el-get.git ~/.emacs.d/el-get
+  git clone git://github.com/dimitri/el-get.git ${HOME}/.emacs.d/el-get
 fi
 
 echo 'Symlinking emacs.d stuff...'
 
-ln -sf ~/.dotfiles/emacs/init.el ~/.emacs.d/init.el
-ln -sf ~/.dotfiles/emacs/modes ~/.emacs.d/modes
+ln -sf ${HOME}/.dotfiles/emacs/init.el ${HOME}/.emacs.d/init.el
+ln -sf ${HOME}/.dotfiles/emacs/modes ${HOME}/.emacs.d/modes
 
 echo 'Symlinking git config...'
 
-ln -sf ~/.dotfiles/gitconfig ~/.gitconfig
+ln -sf ${HOME}/.dotfiles/gitconfig ${HOME}/.gitconfig
 
 echo 'Symlinking tmux config...'
 
-ln -sf ~/.dotfiles/tmux.conf ~/.tmux.conf
+ln -sf ${HOME}/.dotfiles/tmux.conf ${HOME}/.tmux.conf
 
 echo 'Symlinking i3 config'
-mkdir -p ~/.config/i3
-ln -sf ~/.dotfiles/i3/config ~/.config/i3/config
+mkdir -p ${HOME}/.config/i3
+ln -sf ${HOME}/.dotfiles/i3/config ${HOME}/.config/i3/config
 
 echo 'Symlinking i3status config'
-mkdir -p ~/.config/i3status
-ln -sf ~/.dotfiles/i3status/config ~/.config/i3status/config
+mkdir -p ${HOME}/.config/i3status
+ln -sf ${HOME}/.dotfiles/i3status/config ${HOME}/.config/i3status/config
 
 echo "That's all for now!  You might want to close and reopen the shell"
