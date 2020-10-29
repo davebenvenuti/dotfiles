@@ -36,3 +36,5 @@ function podname() {
 }
 
 alias cgrep="grep --color=always"
+
+alias docker-compose-purge="docker-compose down --volumes --rmi local --remove-orphans"
