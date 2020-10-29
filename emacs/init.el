@@ -142,7 +142,8 @@
 (require 'neotree)
 (global-set-key [f8] 'neotree-toggle)
 
-(add-hook 'before-save-hook 'whitespace-cleanup)
+(setq-default whitespace-style ' (face tabs spaces trailing space-before-tab newline indentation empty space-after-tab space-mark tab-mark newline-mark))
+(global-whitespace-cleanup-mode)
 
 (add-to-list 'auto-mode-alist '("\\.cjsx" . coffee-mode))
 
