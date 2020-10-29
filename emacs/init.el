@@ -16,6 +16,29 @@
 
 (which-function-mode 1)
 
+(defun setup-tide-mode ()
+  (interactive)
+  (tide-setup)
+  (flycheck-mode +1)
+  (setq flycheck-check-syntax-automatically '(save mode-enabled))
+  (eldoc-mode +1)
+  (tide-hl-identifier-mode +1)
+  ;; company is an optional dependency. You have to
+  ;; install it separately via package-install
+  ;; `M-x package-install [ret] company`
+  (company-mode +1))
+
+;; aligns annotation to the right hand side
+(setq company-tooltip-align-annotations t)
+
+;; formats the buffer before saving
+;; doesn't work currently, look into why
+;; (add-hook 'before-save-hook 'tide-format-before-save)
+
+(add-hook 'typescript-mode-hook #'setup-tide-mode)
+
+(setq tide-format-options '(:indentSize 2 :tabSize 2))
+
 ;; if needed for mac issues
 (if window-system
  (progn
@@ -100,21 +123,26 @@
 (add-to-list 'load-path "~/.emacs.d/modes/")
 
 
-;; (add-to-list 'auto-mode-alist '("\\.jsx\\'" . jsx-mode))
-;; (autoload 'jsx-mode "jsx-mode" "JSX mode" t)
-
-
 (add-to-list 'auto-mode-alist '("\\.jsx\\'" . rjsx-mode))
 (autoload 'rjsx-mode "rjsx-mode" "JSX mode" t)
 
-;; (add-to-list 'load-path "/some/path/neotree")
+(require 'web-mode)
+(add-to-list 'auto-mode-alist '("\\.tsx\\'" . web-mode))
+(add-hook 'web-mode-hook
+          (lambda ()
+            (setq web-mode-markup-indent-offset 2)
+            (setq web-mode-code-indent-offset 2)
+            (setq web-mode-css-indent-offset 2)            
+            (when (string-equal "tsx" (file-name-extension buffer-file-name))
+              (setup-tide-mode))))
+;; enable typescript-tslint checker
+(flycheck-add-mode 'typescript-tslint 'web-mode)
+
+
 (require 'neotree)
 (global-set-key [f8] 'neotree-toggle)
 
 (add-hook 'before-save-hook 'whitespace-cleanup)
-
-;;(ido-mode t)
-;;(ido-vertical-mode t)
 
 (add-to-list 'auto-mode-alist '("\\.cjsx" . coffee-mode))
 
@@ -140,7 +168,9 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(package-selected-packages (quote (terraform-mode yaml-mode rjsx-mode neotree ivy ag))))
+ '(package-selected-packages
+   (quote
+    (company tide terraform-mode yaml-mode rjsx-mode neotree ivy ag))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
