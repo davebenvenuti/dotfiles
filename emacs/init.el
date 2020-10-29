@@ -171,7 +171,7 @@
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (company tide terraform-mode yaml-mode rjsx-mode neotree ivy ag))))
+    (company tide terraform-mode yaml-mode rjsx-mode neotree ivy ag whitespace-cleanup-mode))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
