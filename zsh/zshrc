@@ -41,7 +41,7 @@ fi
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # plugins=(git heroku rbenv dotenv kubectl kubectl-prompt)
-plugins=(git heroku rbenv dotenv kubectl-prompt)
+plugins=(git heroku rbenv dotenv kubectl kubectl-prompt)
 
 source $ZSH/oh-my-zsh.sh
 
