@@ -1,6 +1,6 @@
 ;; Much of this is from http://viget.com/extend/emacs-24-rails-development-environment-from-scratch-to-productive-in-5-minu
 
-(setq warning-minimum-level :emergency)
+;; (setq warning-minimum-level :emergency)
 
 (push "/usr/local/bin" exec-path)
 (setq make-backup-files nil)
@@ -15,6 +15,8 @@
 (delete-selection-mode t)
 
 (which-function-mode 1)
+
+(add-hook 'before-save-hook 'whitespace-cleanup)
 
 (defun setup-tide-mode ()
   (interactive)
@@ -132,27 +134,19 @@
           (lambda ()
             (setq web-mode-markup-indent-offset 2)
             (setq web-mode-code-indent-offset 2)
-            (setq web-mode-css-indent-offset 2)            
+            (setq web-mode-css-indent-offset 2)
             (when (string-equal "tsx" (file-name-extension buffer-file-name))
               (setup-tide-mode))))
 ;; enable typescript-tslint checker
-(flycheck-add-mode 'typescript-tslint 'web-mode)
+;; (flycheck-add-mode 'typescript-tslint 'web-mode)
 
 
 (require 'neotree)
 (global-set-key [f8] 'neotree-toggle)
 
-(setq-default whitespace-style ' (face tabs spaces trailing space-before-tab newline indentation empty space-after-tab space-mark tab-mark newline-mark))
-(global-whitespace-cleanup-mode)
-
 (add-to-list 'auto-mode-alist '("\\.cjsx" . coffee-mode))
 
 (menu-bar-mode -1)
-
-(define-globalized-minor-mode global-hs-minor-mode
-  hs-minor-mode hs-minor-mode)
-
-; (global-hs-minor-mode 1)
 
 (eval-after-load "hideshow"
   '(add-to-list 'hs-special-modes-alist
@@ -171,7 +165,7 @@
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (company tide terraform-mode yaml-mode rjsx-mode neotree ivy ag whitespace-cleanup-mode))))
+    (company tide terraform-mode yaml-mode rjsx-mode neotree ivy ag))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
