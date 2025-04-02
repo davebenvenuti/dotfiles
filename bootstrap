@@ -45,6 +45,15 @@ ln -sf ${HOME}/.dotfiles/tmux.conf ${HOME}/.tmux.conf
 echo 'Symlinking aider config...'
 ln -sf ${HOME}/.dotfiles/aider.conf.yml ${HOME}/.aider.conf.yml
 
+ghostty_config="${HOME}/Library/Application Support/com.mitchellh.ghostty/config"
+
+if [ `uname` = "Darwin" ] && [ ! -e ${ghostty_config} ]; then
+  echo 'Symlinking ghostty config...'
+
+  mkdir -p `dirname ${ghostty_config}`
+  ln -sf ${HOME}/.dotfiles/ghostty/config ${ghostty_config}
+fi
+
 echo "FYI aliases isn't being used..."
 
-echo "That's all for now!  You might want to close and reopen the shell."
+echo "That's all for now!  You might want to close and reopen the shell"
