@@ -142,3 +142,7 @@ add-zsh-hook -Uz chpwd() {
 }
 
 export AIDER_LOAD=${HOME}/.aider/autoexec.bat
+
+if [ -n "${ANDROID_HOME}" ] && [ -e "${ANDROID_HOME}/platform-tools" ]; then
+  export PATH="${ANDROID_HOME}/platform-tools:${PATH}"
+fi
