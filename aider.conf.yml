@@ -1,8 +1,8 @@
 read:
   - ~/.aider/INSTRUCTIONS.md
   - INSTRUCTIONS.md
-#model: deepseek/deepseek-coder
-model: openrouter/qwen/qwen3-coder
+model: deepseek/deepseek-coder
+#model: openrouter/qwen/qwen3-coder
 dark-mode: true
 auto-commits: false
 editor: /usr/bin/nano -w
